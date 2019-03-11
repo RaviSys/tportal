@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: t_portal_development
+  host: localhost
+  pool: 5
+  username: postgres
+  password: postgres
+  
