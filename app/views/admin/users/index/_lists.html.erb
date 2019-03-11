@@ -1,0 +1,32 @@
+<div class="card rounded-0">
+  <div class="card-body">
+    <% unless @users.empty? %>
+      <h3 class="mb-4">Listing Users</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th colspan="3">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= link_to user.name, admin_user_path(user) %></td>
+              <td><span class="badge badge-primary"><%= user.role.capitalize %></span></td>
+              <td>
+                <%= link_to 'Show', admin_user_path(user), class: "btn btn-primary btn-sm rounded-0" %>
+                <%= link_to 'Edit', edit_admin_user_path(user),class: "btn btn-secondary btn-sm rounded-0" %>
+                <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm rounded-0" %>  
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3 class="mb-4">No Users Yet</h3>
+    <% end %>
+    <%= link_to 'New user', new_admin_user_path, class: "btn btn-primary rounded-0" %>
+  </div>
+</div>
