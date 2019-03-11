@@ -8,4 +8,13 @@ module ApplicationHelper
       when :warning then "alert alert-warning"
     end
   end
+
+  def check_for_mentor_group(mentor, mentor_group)
+    if mentor.mentor_group.present? && mentor.mentor_group == mentor_group
+      true
+    else
+      false
+    end
+  end
+
 end

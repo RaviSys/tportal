@@ -6,7 +6,7 @@ module Concerns::AdminCrud
 
     def index
       @q = resource_class.ransack(params[:q])
-      results = @q.result.order(id: :desc).page(params[:page]).per(10)
+      results = @q.result.order(id: :asc).page(params[:page]).per(10)
       instance_variable_set("@#{plural_resource_name}", results)
       respond_to do |format|
         format.html

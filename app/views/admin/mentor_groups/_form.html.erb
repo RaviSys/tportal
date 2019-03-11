@@ -1,0 +1,26 @@
+<%= form_for [:admin, mentor_group], html: { class: "user" } do |f| %>
+  <% if mentor_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mentor_group.errors.count, "error") %> prohibited this mentor group from being saved:</h2>
+
+      <ul>
+      <% mentor_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control rounded-0" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary shadow rounded-0" %>
+    <%= link_to 'Cancel', admin_mentor_groups_path, class: "btn btn-outline-secondary rounded-0" %>
+  </div>
+
+<% end %>

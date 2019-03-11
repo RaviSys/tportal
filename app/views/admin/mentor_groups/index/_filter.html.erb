@@ -1,0 +1,16 @@
+<div class="card rounded-0 mt-2 mb-5">
+  <div class="card-body">
+    <h3 class="mb-4">Filter mentor groups</h3>
+    <%= search_form_for @q, url: :admin_mentor_groups do |form| %>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <%= form.text_field :name_cont, class: "form-control rounded-0", placeholder: "Search by name" %>
+        </div>
+        <div class="col-md-4">
+          <%= submit_tag "Search", class: "btn btn-primary rounded-0" %>
+          <%= link_to "Reset", admin_mentor_groups_path, class: "btn btn-secondary rounded-0" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

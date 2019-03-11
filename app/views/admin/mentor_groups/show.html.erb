@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card rounded-0 shadow">
+        <div class="card-body">
+          <h4 class="text-muted mb-3"><%= @mentor_group.name %></h4>
+          <hr>
+          <h6 class="text-muted mt-3">Assign Mentors to 
+            <span class="badge badge-primary"><%= @mentor_group.name %></span> 
+          </h6>
+
+          <%= form_for :mentors, url: :assign_mentors_to_group_admin_mentor_groups, method: :post do |f| %>
+            <%= f.hidden_field :mentor_group_id, value: @mentor_group.id %>
+            <% @mentors.each do |mentor| %>
+              <% unless check_for_mentor_group(mentor, @mentor_group) %>
+                <div>
+                  <input type="checkbox" name="mentor_ids[]" value="<%= mentor.id %>">
+                  <label><%= mentor.name %></label>
+                </div>
+              <% else %>
+                <div>
+                  <input type="checkbox" name="remove_mentor_ids[]" value="<%= mentor.id %>" checked>
+                  <label><%= mentor.name %></label>
+                </div>
+              <% end %>
+            <% end %>
+            <%= f.submit "Assign Mentors to Group", class: "btn btn-primary rounded-0" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
