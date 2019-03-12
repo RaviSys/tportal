@@ -1,7 +1,23 @@
 <div class="card rounded-0">
   <div class="card-body">
     <% unless @users.empty? %>
-      <h3 class="mb-4">Listing Users</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="mb-4">Listing Users</h3>
+        </div>
+        <div class="col-md-6">
+          <%= link_to 'New user', new_admin_user_path, class: "btn btn-primary rounded-0 float-right" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <%= link_to "All", admin_users_path, class: "btn btn-primary rounded-0 btn-sm" %>
+          <%= link_to "Mentors", admin_users_path(role: 'mentor'), class: "btn btn-primary rounded-0 btn-sm" %>
+          <%= link_to "Tutors", admin_users_path(role: 'tutor'), class: "btn btn-primary rounded-0 btn-sm" %>
+          <%= link_to "Participants", admin_users_path(role: 'participant'), class: "btn btn-primary rounded-0 btn-sm" %>
+          <%= link_to "College Managers", admin_users_path(role: 'college_manager'), class: "btn btn-primary rounded-0 btn-sm" %>
+        </div>
+      </div>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -27,6 +43,6 @@
     <% else %>
       <h3 class="mb-4">No Users Yet</h3>
     <% end %>
-    <%= link_to 'New user', new_admin_user_path, class: "btn btn-primary rounded-0" %>
+    <%= paginate @users %>
   </div>
 </div>

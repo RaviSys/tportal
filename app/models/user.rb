@@ -11,9 +11,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  scope :mentors, -> { where(role: 'mentor') }
-  scope :participants, -> { where(role: 'participant') }       
-  scope :tutors, -> { where(role: 'tutor') }
+  scope :roled_users, -> (role) { where(role: role) }
 
   ROLES.each do |role|
     define_method "#{role}?" do 

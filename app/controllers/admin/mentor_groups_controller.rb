@@ -2,7 +2,7 @@ class Admin::MentorGroupsController < AdminController
   include Concerns::AdminCrud
 
   def show
-    @mentors = User.mentors
+    @mentors = User.roled_users('mentor')
   end
 
   def assign_mentors_to_group

@@ -66,5 +66,54 @@ users = User.create([
     email: "harsha@tportal.com", 
     password: "password",
     mentor_id: 2
+  },
+  {
+    first_name: "Chetan", 
+    last_name: "Sharma", 
+    role: "tutor", 
+    email: "schetan@tportal.com", 
+    password: "password"
+  },
+  {
+    first_name: "Marwel", 
+    last_name: "Singh", 
+    role: "tutor", 
+    email: "smarwel@tportal.com", 
+    password: "password"
+  }, 
+  {
+    first_name: "Murali", 
+    last_name: "Manohar", 
+    role: "tutor", 
+    email: "manoharm@tportal.com", 
+    password: "password"
+  },
+  {
+    first_name: "Adam", 
+    last_name: "Methews", 
+    role: "tutor", 
+    email: "adams@tportal.com", 
+    password: "password"
+  },
+  {
+    first_name: "Ricky", 
+    last_name: "Martin", 
+    role: "tutor", 
+    email: "martinr@tportal.com", 
+    password: "password"
+  },
+  {
+    first_name: "Alex", 
+    last_name: "Carey", 
+    role: "tutor", 
+    email: "acaery@tportal.com", 
+    password: "password"
+  },
+  {
+    first_name: "Marks", 
+    last_name: "Richard", 
+    role: "tutor", 
+    email: "marks@tportal.com", 
+    password: "password"
   }
 ])
