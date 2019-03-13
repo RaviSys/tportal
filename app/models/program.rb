@@ -1,5 +1,5 @@
 class Program < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :description, presence: true
   has_many :tutor_programs
   has_many :tutors, through: :tutor_programs, class_name: 'User'
   has_many :participant_programs

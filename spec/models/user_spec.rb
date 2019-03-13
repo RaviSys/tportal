@@ -61,4 +61,33 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "Associations" do 
+
+    it "should belongs to mentor groups" do 
+      assc = described_class.reflect_on_association(:mentor_group)
+      expect(assc.macro).to eq :belongs_to
+    end
+
+    it "should have many mentees" do 
+      assc = described_class.reflect_on_association(:mentees)
+      expect(assc.macro).to eq :has_many
+    end
+
+    it "should belongs to mentor" do 
+      assc = described_class.reflect_on_association(:mentor)
+      expect(assc.macro).to eq :belongs_to
+    end
+
+    it "has many tutor programs" do 
+      assc = described_class.reflect_on_association(:tutor_programs)
+      expect(assc.macro).to eq :has_many
+    end
+
+    it "has many participant programs" do 
+      assc = described_class.reflect_on_association(:participant_programs)
+      expect(assc.macro).to eq :has_many
+    end
+
+  end
+
 end
