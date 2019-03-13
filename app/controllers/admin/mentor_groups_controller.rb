@@ -13,7 +13,8 @@ class Admin::MentorGroupsController < AdminController
         user.update(mentor_group_id: @mentor_group.id)
       end
     end
-    redirect_to admin_mentor_group_path(@mentor_group), flash: { success: 'Mentors are assigned successfully to this group' }
+    redirect_to admin_mentor_group_path(@mentor_group),
+      flash: { success: 'Mentors are assigned successfully to this group' }
   end
 
   private

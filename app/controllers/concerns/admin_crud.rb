@@ -20,7 +20,8 @@ module Concerns::AdminCrud
     def create
       set_resource(resource_class.new(resource_params))
       if get_resource.save
-        redirect_to send("admin_#{plural_resource_name}_path"), flash: { success: "#{resource_name.titleize} has been created successfully." }
+        redirect_to send("admin_#{plural_resource_name}_path"),
+          flash: { success: "#{resource_name.titleize} has been created successfully." }
       else
         render :new
       end
@@ -30,7 +31,8 @@ module Concerns::AdminCrud
 
     def update
       if get_resource.update(resource_params)
-        redirect_to send("admin_#{plural_resource_name}_path"), flash: { success: "#{resource_name.titleize} has been updated successfully." }
+        redirect_to send("admin_#{plural_resource_name}_path"),
+          flash: { success: "#{resource_name.titleize} has been updated successfully." }
       else
         render :edit
       end
@@ -40,9 +42,11 @@ module Concerns::AdminCrud
 
     def destroy
       if get_resource && get_resource.destroy
-        redirect_to send("admin_#{plural_resource_name}_path"), flash: { success: "#{resource_name.titleize} has been deleted successfully." }
+        redirect_to send("admin_#{plural_resource_name}_path"),
+          flash: { success: "#{resource_name.titleize} has been deleted successfully." }
       else
-        redirect_to send("admin_#{plural_resource_name}_path"), flash: { error: "No #{resource_name} found!" }
+        redirect_to send("admin_#{plural_resource_name}_path"),
+          flash: { error: "No #{resource_name} found!" }
       end
     end
 
