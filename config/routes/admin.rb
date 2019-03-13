@@ -6,5 +6,22 @@ namespace :admin do
       post :assign_mentors_to_group
     end
   end
-  resources :programs
+  resources :programs do 
+    collection do 
+      get :settings
+    end
+  end
+
+  resources :participant_programs do 
+    collection do 
+      get :assign_participants, path: 'assign'
+    end
+  end 
+
+  resources :tutor_programs do 
+    collection do 
+      get :assign_tutors, path: 'assign'
+    end
+  end 
+
 end

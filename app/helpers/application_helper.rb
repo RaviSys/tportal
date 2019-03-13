@@ -17,4 +17,12 @@ module ApplicationHelper
     end
   end
 
+  def program_list
+    Program.all.map {|p| [p.name, p.id]}
+  end 
+
+  def mentor_group_list
+    MentorGroup.all.map {|mentor_group| [mentor_group.name, mentor_group.id]}
+  end
+
 end

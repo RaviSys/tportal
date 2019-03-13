@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-site mb-4">Assign program to participants</h4>
+      <div class="card shadow rounded-0 border-left-primary mb-4">
+        <div class="card-body">
+          <h6 class="text-site">Help:</h6>
+          <small>Here you can assign a program to multiple participants. Just select a program into which you want to assign participants and then select the participants from the list below.</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow rounded-0">
+        <div class="card-body">
+          <%= form_for :participants, url: '#', method: :post do |f| %>
+            <div class="form-group">
+              <label class="font-weight-bold">Select Program</label>
+              <%= f.select :program_id, options_for_select(program_list), { prompt: "Select a program to assign" }, { class: 'form-control rounded-0' } %>
+            </div>
+            <div class="form-group">
+              <label class="font-weight-bold">Choose participants</label>
+              <% @users.each do |user| %>
+                <div>
+                  <label>
+                    <input type="checkbox" name="participant_ids[]" value="<%= user.id %>">
+                    <%= user.name %>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'Save Assignment', class: "btn btn-primary rounded-0" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,9 @@
 .text-site {
   color: #3f65d4;
 }
+.img-custom {
+  width:100px;
+}
+.border-cc {
+  border: 1px solid #ccc;
+}

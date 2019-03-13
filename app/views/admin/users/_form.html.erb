@@ -43,7 +43,7 @@
   <div class="form-group row" id="mentor_group_block" style="display:none;">
     <div class="col-md-6">
       <%= f.label :mentor %>
-      <%= f.select :mentor_group_id, options_for_select(MentorGroup.all.map {|mentor_group| [mentor_group.name, mentor_group.id]}), {prompt: "Select Mentor Group"}, {class: "form-control rounded-0"} %>
+      <%= f.select :mentor_group_id, options_for_select(mentor_group_list), {prompt: "Select Mentor Group"}, {class: "form-control rounded-0"} %>
     </div>
   </div>
 
