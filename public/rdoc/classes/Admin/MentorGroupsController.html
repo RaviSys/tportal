@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin::MentorGroupsController</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Admin::MentorGroupsController">
+
+  
+
+    <meta name="keywords" content="Admin::MentorGroupsController class">
+  
+    <meta name="keywords" content="show, assign_mentors_to_group">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Admin::MentorGroupsController
+            
+                <span class="parent">&lt;
+                    
+                    <a href="../AdminController.html">AdminController</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/app/controllers/admin/mentor_groups_controller_rb.html">app/controllers/admin/mentor_groups_controller.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-assign_mentors_to_group">assign_mentors_to_group</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-show">show</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="../Concerns/AdminCrud.html">
+              Concerns::AdminCrud
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+    
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-assign_mentors_to_group">
+            
+              <b>assign_mentors_to_group</b>()
+            
+            <a href="../../classes/Admin/MentorGroupsController.html#method-i-assign_mentors_to_group" name="method-i-assign_mentors_to_group" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-assign_mentors_to_group_source')" id="l_method-i-assign_mentors_to_group_source">show</a>
+                
+              </p>
+              <div id="method-i-assign_mentors_to_group_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/admin/mentor_groups_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">assign_mentors_to_group</span>
+  <span class="ruby-ivar">@mentor_group</span> = <span class="ruby-constant">MentorGroup</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:mentors</span>][<span class="ruby-value">:mentor_group_id</span>])
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:mentor_ids</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">mentor_group</span>.<span class="ruby-identifier">present?</span>
+      <span class="ruby-identifier">user</span>.<span class="ruby-identifier">update</span>(<span class="ruby-value">mentor_group_id:</span> <span class="ruby-ivar">@mentor_group</span>.<span class="ruby-identifier">id</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_mentor_group_path</span>(<span class="ruby-ivar">@mentor_group</span>), <span class="ruby-value">flash:</span> { <span class="ruby-value">success:</span> <span class="ruby-string">&#39;Mentors are assigned successfully to this group&#39;</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-show">
+            
+              <b>show</b>()
+            
+            <a href="../../classes/Admin/MentorGroupsController.html#method-i-show" name="method-i-show" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-show_source')" id="l_method-i-show_source">show</a>
+                
+              </p>
+              <div id="method-i-show_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/admin/mentor_groups_controller.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">show</span>
+  <span class="ruby-ivar">@mentors</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;mentor&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>

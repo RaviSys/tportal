@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ApplicationHelper</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="ApplicationHelper">
+
+  
+
+    <meta name="keywords" content="ApplicationHelper class">
+  
+    <meta name="keywords" content="flash_class, check_for_mentor_group, program_list, mentor_group_list">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span>
+            ApplicationHelper
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/app/helpers/application_helper_rb.html">app/helpers/application_helper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-check_for_mentor_group">check_for_mentor_group</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-flash_class">flash_class</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mentor_group_list">mentor_group_list</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-program_list">program_list</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+    
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-check_for_mentor_group">
+            
+              <b>check_for_mentor_group</b>(mentor, mentor_group)
+            
+            <a href="../classes/ApplicationHelper.html#method-i-check_for_mentor_group" name="method-i-check_for_mentor_group" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-check_for_mentor_group_source')" id="l_method-i-check_for_mentor_group_source">show</a>
+                
+              </p>
+              <div id="method-i-check_for_mentor_group_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check_for_mentor_group</span>(<span class="ruby-identifier">mentor</span>, <span class="ruby-identifier">mentor_group</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">mentor</span>.<span class="ruby-identifier">mentor_group</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">mentor</span>.<span class="ruby-identifier">mentor_group</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">mentor_group</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-flash_class">
+            
+              <b>flash_class</b>(level)
+            
+            <a href="../classes/ApplicationHelper.html#method-i-flash_class" name="method-i-flash_class" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-flash_class_source')" id="l_method-i-flash_class_source">show</a>
+                
+              </p>
+              <div id="method-i-flash_class_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">flash_class</span>(<span class="ruby-identifier">level</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">level</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:success</span> <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;alert alert-success&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:notice</span> <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;alert alert-success&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:alert</span> <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;alert alert-danger&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:error</span> <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;alert alert-error&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:warning</span> <span class="ruby-keyword">then</span> <span class="ruby-string">&quot;alert alert-warning&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mentor_group_list">
+            
+              <b>mentor_group_list</b>()
+            
+            <a href="../classes/ApplicationHelper.html#method-i-mentor_group_list" name="method-i-mentor_group_list" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-mentor_group_list_source')" id="l_method-i-mentor_group_list_source">show</a>
+                
+              </p>
+              <div id="method-i-mentor_group_list_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mentor_group_list</span>
+  <span class="ruby-constant">MentorGroup</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">mentor_group</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">mentor_group</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mentor_group</span>.<span class="ruby-identifier">id</span>]}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-program_list">
+            
+              <b>program_list</b>()
+            
+            <a href="../classes/ApplicationHelper.html#method-i-program_list" name="method-i-program_list" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-program_list_source')" id="l_method-i-program_list_source">show</a>
+                
+              </p>
+              <div id="method-i-program_list_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">program_list</span>
+  <span class="ruby-constant">Program</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">p</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">id</span>]}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>
