@@ -36,7 +36,7 @@
   <div class="form-group row" id="mentor_block" style="display:none;">
     <div class="col-md-6">
       <%= f.label :mentor %>
-      <%= f.select :mentor_id, options_for_select(User.mentors.map {|mentor| [mentor.name, mentor.id]}), {prompt: "Select Mentor"}, {class: "form-control rounded-0"} %>
+      <%= f.select :mentor_id, options_for_select(User.roled_users('mentor').map {|mentor| [mentor.name, mentor.id]}), {prompt: "Select Mentor"}, {class: "form-control rounded-0"} %>
     </div>
   </div>
 
@@ -73,22 +73,3 @@
   </div>
 
 <% end %>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#user_role").on('change', function(){
-      if ($(this).children("option:selected").val() == 'participant') {
-        $("#mentor_block").css({"display": "block"})
-      } else {
-        $("#mentor_block").css({"display": "none"})
-      }
-    });
-    $("#user_role").on('change', function(){
-      if ($(this).children("option:selected").val() == 'mentor') {
-        $("#mentor_group_block").css({"display": "block"})
-      } else {
-        $("#mentor_group_block").css({"display": "none"})
-      }
-    });
-  });
-</script>

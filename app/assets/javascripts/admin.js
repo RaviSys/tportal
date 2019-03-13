@@ -6,3 +6,4 @@
 //= require admin/bootstrap-datetimepicker.min
 //= require admin/jquery.easing.min
 //= require admin/sb-admin-2.min
+//= require admin/custom
