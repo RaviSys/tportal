@@ -5,9 +5,10 @@ class User < ApplicationRecord
   belongs_to :mentor_group, optional: true
   has_many :mentees, class_name: 'User', foreign_key: 'mentor_id'
   belongs_to :mentor, class_name: 'User', optional: true
-
   has_many :tutor_programs, foreign_key: 'tutor_id'
   has_many :participant_programs, foreign_key: 'participant_id'
+
+  validates :first_name, :last_name, :contact, presence: true
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable,  and :omniauthable

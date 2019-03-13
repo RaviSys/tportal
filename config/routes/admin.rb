@@ -6,4 +6,5 @@ namespace :admin do
       post :assign_mentors_to_group
     end
   end
+  resources :programs
 end

@@ -1,0 +1,17 @@
+<div class="card rounded-0 mt-2 mb-5">
+  <div class="card-body">
+    <h3 class="mb-4">Filter Programs</h3>
+    <%= search_form_for @q, url: :admin_programs do |form| %>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <%= form.text_field :name_cont, class: "form-control rounded-0", placeholder: "Search by name" %>
+        </div>
+        <div class="col-md-6">
+          <%= form.text_field :description_cont, class: "form-control rounded-0", placeholder: "Search by description" %>
+        </div>
+      </div>
+      <%= submit_tag "Search", class: "btn btn-primary rounded-0" %>
+      <%= link_to "Reset", admin_programs_path, class: "btn btn-secondary rounded-0" %>
+    <% end %>
+  </div>
+</div>

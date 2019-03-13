@@ -1,0 +1,33 @@
+<%= form_for [:admin, program], html: { class: "program" } do |f| %>
+  <% if program.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(program.errors.count, "error") %> prohibited this program from being saved:</h2>
+
+      <ul>
+      <% program.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control rounded-0" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-12">
+      <%= f.label :about_this_program %>
+      <%= f.text_area :description, class: "form-control rounded-0", rows: "6" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary shadow rounded-0" %>
+    <%= link_to 'Cancel', admin_programs_path, class: "btn btn-outline-secondary rounded-0" %>
+  </div>
+
+<% end %>
