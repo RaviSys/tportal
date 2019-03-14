@@ -1,0 +1,29 @@
+<div class="media">
+  <%= image_tag 'user.png', class: "mr-3" %>
+  <div class="media-body">
+    <h5 class="mt-0">
+      <%= @user.name %> 
+      <small class="badge badge-primary"><%= @user.role.capitalize %></small>
+    </h5>
+    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <h6><i class="fas fa-envelope mr-2"></i><b><%= @user.email %></b></h6>
+    <% if @user.participant? %>
+      <h6>
+        <i class="fas fa-user mr-2"></i>
+        <b><%= link_to @user.mentor.name, admin_user_path(@user.mentor) %></b>
+      </h6>
+    <% end %>
+    <% if @user.mentor? && @user.mentees.present? %>
+      <h6 class="text-secondary font-weight-bold text-success"><i class="fas fa-users mr-2"></i>My Mentees</h6>
+      <% @user.mentees.each_with_index do |mentee, i| %>
+        <b><span class="text-primary"><%= i + 1 %>.</span> <%= link_to mentee.name, admin_user_path(mentee) %></b><br>
+      <% end %>
+      <br>
+    <% end %>
+    <h6>
+      <i class="fas fa-lock mr-2"></i>
+      <b><%= @user.sign_in_count %> (Total sign in count)</b>
+    </h6>
+    <%= link_to "Back to List", admin_users_path, class: "btn btn-primary rounded-0 shadow mt-4" %>
+  </div>
+</div>
