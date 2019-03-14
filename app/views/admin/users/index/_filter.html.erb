@@ -10,10 +10,13 @@
           <%= form.text_field :last_name_cont, class: "form-control rounded-0", placeholder: "Search by last name" %>
         </div>
         <div class="col-md-4">
-          <%= form.text_field :contact_cont, class: "form-control rounded-0", placeholder: "Search by contact" %>
+          <%= form.text_field :name_cont, class: "form-control rounded-0", placeholder: "Search by full name" %>
         </div>
       </div>
       <div class="form-group row">
+        <div class="col-md-4">
+          <%= form.text_field :contact_cont, class: "form-control rounded-0", placeholder: "Search by contact" %>
+        </div>
         <div class="col-md-4">
           <%= form.text_field :role_cont, class: "form-control rounded-0", placeholder: "Search by role" %>
         </div>

@@ -17,6 +17,12 @@ class User < ApplicationRecord
 
   scope :roled_users, -> (role) { where(role: role) }
 
+  ransacker :name, formatter: proc { |v| v.mb_chars.downcase.to_s } do |parent|
+    Arel::Nodes::NamedFunction.new('LOWER',
+     [Arel::Nodes::NamedFunction.new('concat_ws',
+      [Arel::Nodes.build_quoted(' '), parent.table[:first_name], parent.table[:last_name]])])
+  end
+
   ROLES.each do |role|
     define_method "#{role}?" do 
       self.role == "#{role}"
