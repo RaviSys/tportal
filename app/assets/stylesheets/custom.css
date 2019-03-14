@@ -7,3 +7,7 @@
 .border-cc {
   border: 1px solid #ccc;
 }
+.lead-site {
+  font-size: .9rem;
+  font-weight: 400;
+}

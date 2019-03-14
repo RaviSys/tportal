@@ -14,14 +14,15 @@ namespace :admin do
 
   resources :participant_programs do 
     collection do 
-      get :assign_participants, path: 'assign'
+      get   :assign_participants, path: 'assign'
+      post  :create_multiple_pp
     end
   end 
 
   resources :tutor_programs do 
     collection do 
-      get :assign_tutors, path: 'assign'
-      post :create_multiple_tp
+      get   :assign_tutors, path: 'assign'
+      post  :create_multiple_tp
     end
   end 
 
