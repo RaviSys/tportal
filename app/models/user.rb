@@ -27,4 +27,16 @@ class User < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
+  def programs_enrolled
+    if self.participant?
+      self.participant_programs.map {|p| p.program}.flatten
+    end
+  end
+
+  def programs_assigned
+    if self.tutor?
+      self.tutor_programs.map {|t| t.program}.flatten
+    end
+  end
+
 end

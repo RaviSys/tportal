@@ -1,0 +1,29 @@
+<div class="col-12">
+  <div class="row">
+    <div class="col-md-6">
+      <% if @user.participant? %>
+        <h4 class="text-site font-weight-bold">Enrolled Programs</h4>
+        <% unless @user.programs_enrolled.empty? %>
+          <ul class="list-group">
+            <% @user.programs_enrolled.each do |program| %>
+              <%= link_to admin_program_path(program), class: "list-group-item list-group-item-action" do %> 
+                <span class="ml-3 font-weight-bold"><%= program.name %></span>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      <% elsif @user.tutor? %>
+        <h4 class="text-site font-weight-bold">Assigned Programs</h4>
+        <% unless @user.programs_assigned.empty? %>
+          <ul class="list-group">
+            <% @user.programs_assigned.each do |program| %>
+              <%= link_to admin_program_path(program), class: "list-group-item list-group-item-action" do %> 
+                <span class="ml-3 font-weight-bold"><%= program.name %></span>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
