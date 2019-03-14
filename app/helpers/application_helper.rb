@@ -29,4 +29,8 @@ module ApplicationHelper
     User.roled_users('participant').map { |p| [p.name, p.id] }
   end
 
+  def tutor_list
+    User.roled_users('tutor').map { |p| [p.name, p.id] }
+  end
+
 end

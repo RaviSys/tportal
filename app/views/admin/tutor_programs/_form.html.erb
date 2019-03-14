@@ -1,0 +1,33 @@
+<%= form_for [:admin, tutor_program], html: { class: "user" } do |f| %>
+  <% if tutor_program.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tutor_program.errors.count, "error") %> prohibited this mentor group from being saved:</h2>
+
+      <ul>
+      <% tutor_program.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.label :program %>
+      <%= f.select :program_id, options_for_select(program_list, selected: tutor_program.program_id), { prompt: "Select a program" }, { class: "form-control rounded-0" } %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.label :tutor %>
+      <%= f.select :tutor_id, options_for_select(tutor_list, selected: tutor_program.tutor_id), { prompt: "Select a tutor" }, { class: "form-control rounded-0" } %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary shadow rounded-0" %>
+    <%= link_to 'Cancel', admin_tutor_programs_path, class: "btn btn-outline-secondary rounded-0" %>
+  </div>
+
+<% end %>

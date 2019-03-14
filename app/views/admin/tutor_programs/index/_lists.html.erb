@@ -1,0 +1,30 @@
+<div class="card rounded-0">
+  <div class="card-body">
+    <h3 class="mb-4">Listing Tutor Programs</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Tutor</th>
+          <th colspan="3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tutor_programs.each do |tutor_program| %>
+          <tr>
+            <td><%= link_to tutor_program.program.name, admin_program_path(tutor_program.program) %></td>
+            <td><%= link_to tutor_program.tutor.name, admin_user_path(tutor_program.tutor) %></td>
+            <td>
+              <%= link_to 'Edit', edit_admin_tutor_program_path(tutor_program),class: "btn btn-secondary btn-sm rounded-0" %>
+              <%= link_to 'Destroy', admin_tutor_program_path(tutor_program), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm rounded-0" %>  
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'New tutor Program', new_admin_tutor_program_path, class: "btn btn-primary rounded-0" %>
+
+    <%= paginate @tutor_programs %>
+
+  </div>
+</div>
