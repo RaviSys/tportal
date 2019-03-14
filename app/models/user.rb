@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   scope :roled_users, -> (role) { where(role: role) }
 
+  ransack_alias :username,:first_name_or_last_name_or_name
   ransacker :name, formatter: proc { |v| v.mb_chars.downcase.to_s } do |parent|
     Arel::Nodes::NamedFunction.new('LOWER',
      [Arel::Nodes::NamedFunction.new('concat_ws',
