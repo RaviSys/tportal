@@ -4,10 +4,10 @@
     <%= search_form_for @q, url: :admin_tutor_programs do |form| %>
       <div class="form-group row">
         <div class="col-md-6">
-          <%= form.text_field :program_name_cont, class: "form-control rounded-0", placeholder: "Search by program" %>
+          <%= form.text_field :program_cont, class: "form-control rounded-0", placeholder: "Search by program" %>
         </div>
         <div class="col-md-6">
-          <%= form.text_field :tutor_first_name_or_tutor_last_name_cont, class: "form-control rounded-0", placeholder: "Search by tutor" %>
+          <%= form.text_field :tutor_cont, class: "form-control rounded-0", placeholder: "Search by tutor" %>
         </div>
         <div class="col-md-4 mt-4">
           <%= submit_tag "Search", class: "btn btn-primary rounded-0" %>
