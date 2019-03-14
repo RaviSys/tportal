@@ -21,6 +21,7 @@ namespace :admin do
   resources :tutor_programs do 
     collection do 
       get :assign_tutors, path: 'assign'
+      post :create_multiple_tp
     end
   end 
 

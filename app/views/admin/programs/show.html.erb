@@ -13,5 +13,31 @@
         </div>
       </div>
     </div>
+    <% if @program.tutors.present? %>
+      <div class="col-md-6">
+        <div class="card shadow rounded-0 mt-5 mb-5">
+          <div class="card-body">
+            <h4 class="text-site text-center">Tutors</h4>
+            <ul class="list-group">
+              <% @program.tutors.each do |tutor| %>
+                <%= link_to admin_user_path(tutor), class: "list-group-item list-group-item-action" do %>
+                  <%= image_tag 'user.png', width: "35" %> 
+                  <span class="ml-3 font-weight-bold"><%= tutor.name %></span>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if @program.participants.present? %>
+      <div class="col-md-6">
+        <div class="card shadow rounded-0 mt-5 mb-5">
+          <div class="card-body">
+            <h6 class="text-site text-center">Participants</h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
