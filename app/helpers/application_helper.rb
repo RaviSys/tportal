@@ -25,4 +25,8 @@ module ApplicationHelper
     MentorGroup.all.map {|mentor_group| [mentor_group.name, mentor_group.id]}
   end
 
+  def participant_list
+    User.roled_users('participant').map { |p| [p.name, p.id] }
+  end
+
 end

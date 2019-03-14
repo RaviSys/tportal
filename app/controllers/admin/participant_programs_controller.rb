@@ -15,4 +15,10 @@ class Admin::ParticipantProgramsController < AdminController
     end
   end
 
+  private
+
+    def participant_program_params
+      params.require(:participant_program).permit!
+    end
+
 end
