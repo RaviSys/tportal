@@ -2,7 +2,7 @@ class UserDecorator < ApplicationDecorator
   delegate_all
 
   def created_at
-    object.created_at.strftime("%a %m/%d/%y")
+    object.created_at.strftime("%a, %d %B %Y")
   end
 
   def name
