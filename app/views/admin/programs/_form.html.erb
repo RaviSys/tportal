@@ -1,15 +1,6 @@
 <%= form_for [:admin, program], html: { class: "program" } do |f| %>
-  <% if program.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(program.errors.count, "error") %> prohibited this program from being saved:</h2>
-
-      <ul>
-      <% program.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
+  <%= render "partials/form_errors", object: program %>
 
   <div class="form-group row">
     <div class="col-md-6">

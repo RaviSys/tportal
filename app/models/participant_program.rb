@@ -10,5 +10,6 @@ class ParticipantProgram < ApplicationRecord
       scope: :program_id, 
       message: 'has already been assigned to this program' 
     }
+  validates :participant_id, :program_id, presence: true
 
 end

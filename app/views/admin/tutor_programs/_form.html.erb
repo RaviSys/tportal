@@ -1,15 +1,6 @@
 <%= form_for [:admin, tutor_program], html: { class: "user" } do |f| %>
-  <% if tutor_program.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tutor_program.errors.count, "error") %> prohibited this mentor group from being saved:</h2>
-
-      <ul>
-      <% tutor_program.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
+  <%= render "partials/form_errors", object: tutor_program %>
 
   <div class="form-group row">
     <div class="col-md-6">

@@ -11,3 +11,9 @@
   font-size: .9rem;
   font-weight: 400;
 }
+.alert-danger-site {
+  color: #ffffff;
+  background-color: #e74a3b;
+  border-color: #e74a3b;
+  border-radius: 0px;
+}

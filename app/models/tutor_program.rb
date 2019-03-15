@@ -10,4 +10,6 @@ class TutorProgram < ApplicationRecord
       message: 'has already been assigned to this program' 
     }
 
+  validates :tutor_id, :program_id, presence: true
+
 end
