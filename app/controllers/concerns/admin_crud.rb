@@ -10,6 +10,7 @@ module Concerns::AdminCrud
       instance_variable_set("@#{plural_resource_name}", results)
       respond_to do |format|
         format.html
+        format.csv { send_data resource_class.all.to_csv }
       end
     end
 
