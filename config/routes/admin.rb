@@ -10,6 +10,10 @@ namespace :admin do
     collection do 
       get :settings
     end
+    member do 
+      get :check_if_assigned_to_tutors
+      get :check_if_assigned_to_participants
+    end
   end
 
   resources :participant_programs do 

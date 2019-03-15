@@ -17,3 +17,9 @@
   border-color: #e74a3b;
   border-radius: 0px;
 }
+.hidden-submit {
+  display:none;
+}
+#assigned_tutors, #assigned_participants {
+  display:none;
+}

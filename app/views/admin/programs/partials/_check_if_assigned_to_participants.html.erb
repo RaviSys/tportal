@@ -1,0 +1,15 @@
+<div class="form-group">
+  <% unless @users.empty? %>
+    <label class="font-weight-bold">Choose participants</label>
+    <% @users.each do |user| %>
+      <div>
+        <label>
+          <input type="checkbox" name="participant_ids[]" value="<%= user.id %>">
+          <%= user.name %>
+        </label>
+      </div>
+    <% end %>
+  <% else %>
+    <label class="font-weight-bold">No participants available. This may be assigned to all participants</label>
+  <% end %>
+</div>

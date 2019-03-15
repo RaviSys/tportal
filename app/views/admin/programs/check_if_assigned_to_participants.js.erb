@@ -1,0 +1,18 @@
+<% if params[:id] != 'blank' %>
+  $("#participant_list_box").html("<%= escape_javascript render(partial: 'admin/programs/partials/check_if_assigned_to_participants') %>");
+
+  $("#assigned_participants").html("<%= escape_javascript render(partial: 'admin/programs/partials/already_enrolled_participants', locals: { participants: @participants, program: @program }) %>");
+  
+  $("#assigned_participants").show();
+
+  <% unless @users.empty? %>
+    $(".hidden-submit").show();
+  <% else %>
+    $(".hidden-submit").hide();
+  <% end %>
+
+<% else %>
+  $("#participant_list_box").html("<p class='alert alert-danger-site'>Please select a valid program before assigning it to participants.</p>");
+  $(".hidden-submit").hide();
+  $("#assigned_participants").hide();
+<% end %>

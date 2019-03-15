@@ -1,0 +1,22 @@
+<% if params[:id] != 'blank' %>
+  
+  $("#tutor_list_box").html("<%= escape_javascript render(partial: 'admin/programs/partials/check_if_assigned_to_tutors') %>");
+  
+  $("#assigned_tutors").html("<%= escape_javascript render(partial: 'admin/programs/partials/already_assigned_tutors', locals: { tutors: @tutors, program: @program }) %>");
+  
+  $("#assigned_tutors").show();
+
+  <% unless @users.empty? %>
+    $(".hidden-submit").show();
+  <% else %>
+    $(".hidden-submit").hide();
+  <% end %>
+  
+<% else %>
+  
+  $("#tutor_list_box").html("<p class='alert alert-danger-site'>Please select a valid program before assigning it to tutors.</p>");
+  
+  $(".hidden-submit").hide();
+  
+  $("#assigned_tutors").hide();
+<% end %>

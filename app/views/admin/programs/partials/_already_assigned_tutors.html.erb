@@ -1,0 +1,17 @@
+<div class="card shadow rounded-0">
+  <div class="card-body">
+    <% unless tutors.nil? %>
+      <h5 class="text-site font-weight-bold">Tutors assigned to <%= link_to @program.name, admin_program_path(@program) %></h5>
+      <ul class="list-group">
+        <% tutors.each do |tutor| %>
+          <%= link_to admin_user_path(tutor), class: "list-group-item list-group-item-action" do %>
+            <%= image_tag 'user.png', width: "35" %> 
+            <span class="ml-3 font-weight-bold"><%= tutor.name %></span>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <h5 class="text-site font-weight-bold">No tutors assigned to <%= link_to @program.name, admin_program_path(@program) %> yet</h5>
+    <% end %>
+  </div>
+</div>
