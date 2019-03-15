@@ -4,4 +4,11 @@ class ParticipantProgram < ApplicationRecord
   ransack_alias :participant,
     :participant_first_name_or_participant_last_name_or_participant_name
   ransack_alias :program, :program_name
+
+  validates :participant_id,
+    uniqueness: { 
+      scope: :program_id, 
+      message: 'has already been assigned to this program' 
+    }
+
 end

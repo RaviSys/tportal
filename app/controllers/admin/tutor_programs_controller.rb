@@ -15,4 +15,10 @@ class Admin::TutorProgramsController < AdminController
     end
   end
 
+  private
+
+    def tutor_program_params
+      params.require(:tutor_program).permit!
+    end
+
 end
