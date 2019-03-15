@@ -7,11 +7,15 @@ class Admin::UsersController < AdminController
     else
       @q = User.ransack(params[:q])
     end
-    @users = @q.result.order(id: :asc).page(params[:page]).per(10)
+    @users = @q.result.order(id: :asc).page(params[:page]).per(10).decorate
     respond_to do |format|
       format.html
       format.csv { send_data User.all.to_csv, filename: "users-#{Date.today}.csv" }
     end
+  end
+
+  def show
+    @user = User.find(params[:id]).decorate
   end
 
   private

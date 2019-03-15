@@ -71,7 +71,7 @@ module Concerns::AdminCrud
 
     def set_resource(resource=nil)
       resource ||= resource_class.find(params[:id])
-      instance_variable_set("@#{resource_name}", resource)
+      instance_variable_set("@#{resource_name}", resource).decorate
     end
 
     def get_resource

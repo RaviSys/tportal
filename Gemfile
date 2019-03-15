@@ -74,5 +74,5 @@ gem 'ransack'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'kaminari'
 gem 'cocoon'
-
+gem 'draper', '~> 3.0.0'
 gem 'sdoc'

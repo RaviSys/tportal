@@ -30,10 +30,6 @@ class User < ApplicationRecord
     end
   end
 
-  def name
-    "#{self.first_name} #{self.last_name}"
-  end
-
   def programs_enrolled
     if self.participant?
       self.participant_programs.map {|p| p.program}.flatten
