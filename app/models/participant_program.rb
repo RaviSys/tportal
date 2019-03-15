@@ -12,4 +12,7 @@ class ParticipantProgram < ApplicationRecord
     }
   validates :participant_id, :program_id, presence: true
 
+  delegate :name, to: :program, allow_nil: true, prefix: :program
+  delegate :name, to: :participant, allow_nil: true, prefix: :participant
+
 end

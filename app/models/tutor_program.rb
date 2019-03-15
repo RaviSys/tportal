@@ -12,4 +12,7 @@ class TutorProgram < ApplicationRecord
 
   validates :tutor_id, :program_id, presence: true
 
+  delegate :name, to: :program, allow_nil: true, prefix: :program
+  delegate :name, to: :tutor, allow_nil: true, prefix: :tutor
+
 end
