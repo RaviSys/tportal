@@ -10,6 +10,19 @@
   </div>
 
   <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.label :start_date %>
+      <%= f.text_field :to_be_start_from, class: "form-control rounded-0", id: "program_start_date" %>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :end_date %>
+        <%= f.text_field :to_be_end_upto, class: "form-control rounded-0", id: "program_end_date" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
     <div class="col-md-12">
       <%= f.label :about_this_program %>
       <%= f.text_area :description, class: "form-control rounded-0", rows: "6" %>
@@ -22,3 +35,14 @@
   </div>
 
 <% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $('#program_start_date').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+    $('#program_end_date').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+  });
+</script>

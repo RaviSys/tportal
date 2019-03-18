@@ -11,8 +11,10 @@ namespace :admin do
       get :settings
     end
     member do 
-      get :check_if_assigned_to_tutors
-      get :check_if_assigned_to_participants
+      get  :check_if_assigned_to_tutors
+      get  :check_if_assigned_to_participants
+      get  :add_lectures
+      post :create_lectures
     end
   end
 
