@@ -1,3 +1,3 @@
 class Lecture < ApplicationRecord
-  belongs_to :program
+  belongs_to :program, optional: true
 end

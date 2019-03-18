@@ -16,6 +16,17 @@
               </div>
             </div>
             <div class="form-group row">
+              <% @weekdays.each_with_index do |day, index| %>
+                <div class="col-md-2">
+                  <label>
+                    <input type="checkbox" name="wdays[]" value="<%= index %>">
+                    <%= day %>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'Create Lectures', class: "btn btn-primary rounded-0" %>
             </div>
           <% end %>
         </div>

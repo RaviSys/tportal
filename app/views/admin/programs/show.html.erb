@@ -14,6 +14,13 @@
               <%= link_to "Add Sessions", add_lectures_admin_program_path(@program), class: "btn btn-outline-success rounded-0" %>
               <%= link_to "Back to List", admin_programs_path, class: "btn btn-outline-success rounded-0" %>
             </div>
+            <% if @program.lectures.present? %>
+              <div class="mb-4">
+                <%= link_to admin_program_path(@program), class: "btn btn-outline-primary rounded-0" do %>
+                  View All Lectures <span class="badge badge-primary"><%= @program.lectures.count %></span>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
