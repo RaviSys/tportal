@@ -13,7 +13,7 @@
         <% @participant_programs.each do |participant_program| %>
           <tr>
             <td><%= link_to participant_program.program.name, admin_program_path(participant_program.program) %></td>
-            <td><%= link_to participant_program.participant.name, admin_user_path(participant_program.participant) %></td>
+            <td><%= link_to participant_program.participant_name, admin_user_path(participant_program.participant) %></td>
             <td>
               <%= link_to 'Edit', edit_admin_participant_program_path(participant_program),class: "btn btn-secondary btn-sm rounded-0" %>
               <%= link_to 'Destroy', admin_participant_program_path(participant_program), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm rounded-0" %>  

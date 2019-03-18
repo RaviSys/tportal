@@ -42,6 +42,10 @@ class User < ApplicationRecord
     end
   end
 
+  def name
+    "#{self.first_name} #{self.last_name}".strip
+  end
+
   def self.to_csv
     attributes = %w{id email name role}
     CSV.generate(headers: true) do |csv|
