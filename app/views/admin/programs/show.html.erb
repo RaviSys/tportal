@@ -16,7 +16,7 @@
             </div>
             <% if @program.lectures.present? %>
               <div class="mb-4">
-                <%= link_to admin_program_path(@program), class: "btn btn-outline-primary rounded-0" do %>
+                <%= link_to admin_program_lectures_path(@program), class: "btn btn-outline-primary rounded-0" do %>
                   View All Lectures <span class="badge badge-primary"><%= @program.lectures.count %></span>
                 <% end %>
               </div>

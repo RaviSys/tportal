@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow rounded-0">
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Topic</th>
+                <th>Date</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Actions</th>
+              </tr>
+            </thead>  
+            <tbody>
+              <% @lectures.each do |lecture| %>
+                <tr>
+                  <td><%= link_to lecture.title, admin_lecture_path(lecture) %></td>
+                  <td><%= lecture.begin_time.to_date %></td>
+                  <td><%= lecture.begin_time.strftime("%H:%M %p") %></td>
+                  <td><%= lecture.end_time.strftime("%H:%M %p") %></td>
+                  <td>
+                    <%= link_to "Edit", edit_admin_lecture_path(lecture), class: "btn btn-secondary rounded-0 btn-sm" %>
+                    <%= link_to "Delete", admin_lecture_path(lecture), class: "btn btn-danger rounded-0 btn-sm", method: "delete", data: { confirm: 'Are you sure?' } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

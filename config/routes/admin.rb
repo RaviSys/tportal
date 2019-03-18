@@ -16,6 +16,7 @@ namespace :admin do
       get  :add_lectures
       post :create_lectures
     end
+    resources :lectures, shallow: true
   end
 
   resources :participant_programs do 
