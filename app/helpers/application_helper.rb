@@ -9,6 +9,13 @@ module ApplicationHelper
     end
   end
 
+  def present(object, klass = nil)
+    klass ||= "#{object.class}Presenter".constantize
+    presenter = klass.new(object, self)
+    yield presenter if block_given?
+    presenter
+  end
+
   def check_for_mentor_group(mentor, mentor_group)
     if mentor.mentor_group.present? && mentor.mentor_group == mentor_group
       true
