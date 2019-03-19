@@ -12,19 +12,22 @@
                 <th>To</th>
                 <th>Actions</th>
               </tr>
-            </thead>  
+            </thead>
             <tbody>
               <% @lectures.each do |lecture| %>
-                <tr>
-                  <td><%= link_to lecture.title, admin_lecture_path(lecture) %></td>
-                  <td><%= lecture.begin_time.to_date %></td>
-                  <td><%= lecture.begin_time.strftime("%H:%M %p") %></td>
-                  <td><%= lecture.end_time.strftime("%H:%M %p") %></td>
-                  <td>
-                    <%= link_to "Edit", edit_admin_lecture_path(lecture), class: "btn btn-secondary rounded-0 btn-sm" %>
-                    <%= link_to "Delete", admin_lecture_path(lecture), class: "btn btn-danger rounded-0 btn-sm", method: "delete", data: { confirm: 'Are you sure?' } %>
-                  </td>
-                </tr>
+                <% present lecture do |lecture_presenter| %>
+                  <tr>
+                    <td><p class="text-primary title" data-toggle="popover-click" data-trigger="click" id="<%= lecture.id %>", title-value="<%= lecture.title %>" title="Edit Title"><%= lecture.title %></p></td>
+                    <td><%= lecture_presenter.start_date %></td>
+                    <td><%= lecture_presenter.start_time %></td>
+                    <td><%= lecture_presenter.end_time %></td>
+                    <td>
+                      <%= link_to 'Show', admin_lecture_path(lecture), class: "btn btn-secondary rounded-0 btn-sm"  %>
+                      <%= link_to "Edit", edit_admin_lecture_path(lecture), class: "btn btn-secondary rounded-0 btn-sm" %>
+                      <%= link_to "Delete", admin_lecture_path(lecture), class: "btn btn-danger rounded-0 btn-sm", method: "delete", data: { confirm: 'Are you sure?' } %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>
@@ -33,3 +36,29 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="popover-click"]').popover({
+      placement: 'top',
+      html: true,
+      content: function() {
+        var id = this.id;
+        var title = $("#"+this.id).attr("title-value");
+        return input_form(id, title);
+      }
+    })
+
+    function input_form(id, title){
+      return (`<form class="lecture" id="edit_lecture_`+id+`" action="/admin/lectures/`+id+`" accept-charset="UTF-8" method="get"><div class="form-group row"> <div class="col-md-6"><input type="text" name="title" autofocus="autofocus" value="`+title+`"></div></div>
+        <div class="actions"><button type="submit" class = "btn title-update btn-primary shadow rounded-0">save</button></div></form>`);
+    }
+  });
+</script>
+
+<style type="text/css">
+  .title {
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>

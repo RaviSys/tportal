@@ -1,0 +1,40 @@
+<%= form_for [:admin, @lecture], html: { class: "lecture" } do |f| %>
+
+  <%= render "partials/form_errors", object: @lecture %>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control rounded-0" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.label :begin_time %>
+      <%= f.text_field :begin_time, class: "form-control rounded-0", id: "lecture_begin_time" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :end_time %>
+      <%= f.text_field :end_time, class: "form-control rounded-0", id: "lecture_end_time" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary shadow rounded-0" %>
+    <%= link_to 'Cancel', admin_program_lectures_path(@lecture.program), class: "btn btn-outline-secondary rounded-0" %>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $('#lecture_begin_time').datetimepicker({
+      format: 'DD/MM/YYYY LT'
+    });
+    $('#lecture_end_time').datetimepicker({
+      format: 'DD/MM/YYYY LT'
+    });
+  });
+
+</script>
