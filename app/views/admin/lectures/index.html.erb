@@ -17,7 +17,15 @@
               <% @lectures.each do |lecture| %>
                 <% present lecture do |lecture_presenter| %>
                   <tr>
-                    <td><p class="text-primary title" data-toggle="popover-click" data-trigger="click" id="<%= lecture.id %>", title-value="<%= lecture.title %>" title="Edit Title"><%= lecture.title %></p></td>
+
+                    <td>
+                      <p class='text-primary title'
+                          data-content='<%= render partial: "title_edit", locals: { lecture: lecture } %>'
+                          data-toggle='popover'
+                          title='Edit Title'>
+                      <%= lecture.title %>
+                      </p>
+                    </td>
                     <td><%= lecture_presenter.start_date %></td>
                     <td><%= lecture_presenter.start_time %></td>
                     <td><%= lecture_presenter.end_time %></td>
@@ -31,6 +39,7 @@
               <% end %>
             </tbody>
           </table>
+          <%= will_paginate @lectures %>
         </div>
       </div>
     </div>
@@ -39,26 +48,9 @@
 
 <script type="text/javascript">
   $(function () {
-    $('[data-toggle="popover-click"]').popover({
-      placement: 'top',
+    $('[data-toggle="popover"]').popover({
       html: true,
-      content: function() {
-        var id = this.id;
-        var title = $("#"+this.id).attr("title-value");
-        return input_form(id, title);
-      }
-    })
-
-    function input_form(id, title){
-      return (`<form class="lecture" id="edit_lecture_`+id+`" action="/admin/lectures/`+id+`" accept-charset="UTF-8" method="get"><div class="form-group row"> <div class="col-md-6"><input type="text" name="title" autofocus="autofocus" value="`+title+`"></div></div>
-        <div class="actions"><button type="submit" class = "btn title-update btn-primary shadow rounded-0">save</button></div></form>`);
-    }
-  });
+      placement: 'top'
+    });
+  })
 </script>
-
-<style type="text/css">
-  .title {
-    font-weight: bold;
-    cursor: pointer;
-  }
-</style>

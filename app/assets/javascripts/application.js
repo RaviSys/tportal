@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require bootstrap/bootstrap-rails-tooltip
+//= require bootstrap/bootstrap-rails-popover
 //= require rails-ujs
 //= require jquery3
 //= require popper

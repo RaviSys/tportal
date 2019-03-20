@@ -1,0 +1,4 @@
+<%= form_for [:admin, lecture], method: 'put' do |f| %>
+  <%= f.text_field :title, autofocus: true %>
+  <%= f.submit("", class: 'title-save btn')%>
+<% end %>

@@ -23,3 +23,24 @@
 #assigned_tutors, #assigned_participants {
   display:none;
 }
+
+.title {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.title-save {
+  cursor: pointer;
+  background: url(/assets/ok-btn.svg) no-repeat;
+  width: 39px;
+}
+
+#lecture_title {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.pagination a, .pagination em {
+  padding-left: 2%;
+  align-text: center;
+}
