@@ -5,7 +5,7 @@ class Admin::LecturesController < AdminController
 
   def index
     @program = Program.find(params[:program_id])
-    @lectures = @program.lectures.paginate(page: params[:page], per_page: 10)
+    @lectures = @program.lectures.page(params[:page]).per(10)
   end
 
   def show; end

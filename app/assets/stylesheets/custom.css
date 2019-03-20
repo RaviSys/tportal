@@ -40,7 +40,6 @@
   font-size: 1.1em;
 }
 
-.pagination a, .pagination em {
-  padding-left: 2%;
-  align-text: center;
+.pagination li{
+  width: 8%;
 }
