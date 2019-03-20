@@ -11,7 +11,12 @@
             <p class="card-text">From : <%= lecture_presenter.start_time %> - <%= lecture_presenter.end_time %></p>
             <%= link_to "Edit", edit_admin_lecture_path(@lecture), class: "btn btn-success rounded-0 btn" %>
             <%= link_to "Delete", admin_lecture_path(@lecture), class: "btn btn-danger rounded-0 btn", method: "delete", data: { confirm: 'Are you sure?' } %>
-            <%= link_to "Back to List", admin_program_lectures_path(@lecture.program), class: "btn btn-outline-success rounded-0" %>
+            <% path = if ActiveModel::Type::Boolean.new.cast(params[:calender])
+                 admin_program_lectures_path(@lecture.program, calender: true)
+               else
+                admin_program_lectures_path(@lecture.program)
+               end %>
+            <%= link_to "Back to List", path, class: "btn btn-outline-success rounded-0" %>
           </div>
         </div>
       </div>

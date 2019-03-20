@@ -19,6 +19,10 @@
                 <%= link_to admin_program_lectures_path(@program), class: "btn btn-outline-primary rounded-0" do %>
                   View All Lectures <span class="badge badge-primary"><%= @program.lectures.count %></span>
                 <% end %>
+
+                <%= link_to admin_program_lectures_path(@program, calender: true), class: "btn btn-outline-primary rounded-0" do %>
+                  View Calender <span class="badge badge-primary"><%= @program.lectures.count %></span>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -32,7 +36,7 @@
               <ul class="list-group">
                 <% @program.tutors.each do |tutor| %>
                   <%= link_to admin_user_path(tutor), class: "list-group-item list-group-item-action" do %>
-                    <%= image_tag 'user.png', width: "35" %> 
+                    <%= image_tag 'user.png', width: "35" %>
                     <span class="ml-3 font-weight-bold"><%= tutor.name %></span>
                   <% end %>
                 <% end %>
@@ -49,7 +53,7 @@
               <ul class="list-group">
                 <% @program.participants.each do |participant| %>
                   <%= link_to admin_user_path(participant), class: "list-group-item list-group-item-action" do %>
-                    <%= image_tag 'user.png', width: "35" %> 
+                    <%= image_tag 'user.png', width: "35" %>
                     <span class="ml-3 font-weight-bold"><%= participant.name %></span>
                   <% end %>
                 <% end %>
