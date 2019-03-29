@@ -17,7 +17,7 @@
 
     <meta name="keywords" content="Admin::ProgramsController class">
   
-    <meta name="keywords" content="settings">
+    <meta name="keywords" content="settings, check_if_assigned_to_tutors, check_if_assigned_to_participants, add_lectures, create_lectures">
   
 </head>
 
@@ -60,6 +60,40 @@
     <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add_lectures">add_lectures</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-check_if_assigned_to_participants">check_if_assigned_to_participants</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-check_if_assigned_to_tutors">check_if_assigned_to_tutors</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create_lectures">create_lectures</a>
+              </li>
+            
+          </ul>
+        </dd>
       
         <dt>S</dt>
         <dd>
@@ -112,6 +146,182 @@
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
+          <div class="title method-title" id="method-i-add_lectures">
+            
+              <b>add_lectures</b>()
+            
+            <a href="../../classes/Admin/ProgramsController.html#method-i-add_lectures" name="method-i-add_lectures" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-add_lectures_source')" id="l_method-i-add_lectures_source">show</a>
+                
+              </p>
+              <div id="method-i-add_lectures_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/admin/programs_controller.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_lectures</span>
+  <span class="ruby-ivar">@weekdays</span> = [<span class="ruby-string">&#39;Sunday&#39;</span>, <span class="ruby-string">&#39;Monday&#39;</span>, <span class="ruby-string">&#39;Tuesday&#39;</span>, <span class="ruby-string">&#39;Wednesday&#39;</span>, <span class="ruby-string">&#39;Thursday&#39;</span>, <span class="ruby-string">&#39;Friday&#39;</span>, <span class="ruby-string">&#39;Saturday&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-check_if_assigned_to_participants">
+            
+              <b>check_if_assigned_to_participants</b>()
+            
+            <a href="../../classes/Admin/ProgramsController.html#method-i-check_if_assigned_to_participants" name="method-i-check_if_assigned_to_participants" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-check_if_assigned_to_participants_source')" id="l_method-i-check_if_assigned_to_participants_source">show</a>
+                
+              </p>
+              <div id="method-i-check_if_assigned_to_participants_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/admin/programs_controller.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check_if_assigned_to_participants</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;blank&#39;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">participants</span>.<span class="ruby-identifier">present?</span>
+      <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;participant&#39;</span>)
+        .<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;id NOT IN (?)&#39;</span>, <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">participants</span>.<span class="ruby-identifier">ids</span>)
+      <span class="ruby-ivar">@participants</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;participant&#39;</span>)
+        .<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;id IN (?)&#39;</span>, <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">participants</span>.<span class="ruby-identifier">ids</span>)
+    <span class="ruby-keyword">else</span> 
+      <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;participant&#39;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-check_if_assigned_to_tutors">
+            
+              <b>check_if_assigned_to_tutors</b>()
+            
+            <a href="../../classes/Admin/ProgramsController.html#method-i-check_if_assigned_to_tutors" name="method-i-check_if_assigned_to_tutors" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-check_if_assigned_to_tutors_source')" id="l_method-i-check_if_assigned_to_tutors_source">show</a>
+                
+              </p>
+              <div id="method-i-check_if_assigned_to_tutors_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/admin/programs_controller.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check_if_assigned_to_tutors</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;blank&#39;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">tutors</span>.<span class="ruby-identifier">present?</span>
+      <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;tutor&#39;</span>)
+        .<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;id NOT IN (?)&#39;</span>, <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">tutors</span>.<span class="ruby-identifier">ids</span>)
+      <span class="ruby-ivar">@tutors</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;tutor&#39;</span>)
+        .<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;id IN (?)&#39;</span>, <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">tutors</span>.<span class="ruby-identifier">ids</span>)
+    <span class="ruby-keyword">else</span> 
+      <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;tutor&#39;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_lectures">
+            
+              <b>create_lectures</b>()
+            
+            <a href="../../classes/Admin/ProgramsController.html#method-i-create_lectures" name="method-i-create_lectures" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-create_lectures_source')" id="l_method-i-create_lectures_source">show</a>
+                
+              </p>
+              <div id="method-i-create_lectures_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/admin/programs_controller.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_lectures</span>
+  <span class="ruby-identifier">start_date</span> = <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">to_be_start_from</span>
+  <span class="ruby-identifier">end_date</span> = <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">to_be_end_upto</span>
+  <span class="ruby-identifier">my_days</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:wdays</span>].<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_i</span>}
+  <span class="ruby-identifier">lecture_dates</span> = (<span class="ruby-identifier">start_date</span><span class="ruby-operator">..</span><span class="ruby-identifier">end_date</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">my_days</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">wday</span>)}
+  <span class="ruby-identifier">lecture_dates</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">date</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">begin_time</span> = (<span class="ruby-identifier">date</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{params[:lectures][:begin_time].to_s}&quot;</span>).<span class="ruby-identifier">to_time</span>.<span class="ruby-identifier">to_datetime</span>
+    <span class="ruby-identifier">end_time</span> = (<span class="ruby-identifier">date</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{params[:lectures][:end_time].to_s}&quot;</span>).<span class="ruby-identifier">to_time</span>.<span class="ruby-identifier">to_datetime</span>
+    <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">lectures</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&#39;Test Topic&#39;</span>, <span class="ruby-value">begin_time:</span> <span class="ruby-identifier">begin_time</span>, <span class="ruby-value">end_time:</span> <span class="ruby-identifier">end_time</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_program_path</span>(<span class="ruby-ivar">@program</span>),
+    <span class="ruby-value">flash:</span> { <span class="ruby-value">success:</span> <span class="ruby-string">&#39;Lectures has been created successfully.&#39;</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
           <div class="title method-title" id="method-i-settings">
             
               <b>settings</b>()
@@ -139,7 +349,7 @@
                 
               </p>
               <div id="method-i-settings_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/controllers/admin/programs_controller.rb, line 4</span>
+                <pre><span class="ruby-comment"># File app/controllers/admin/programs_controller.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">settings</span>;<span class="ruby-keyword">end</span></pre>
               </div>
             </div>

@@ -17,7 +17,7 @@
 
     <meta name="keywords" content="Admin::ParticipantProgramsController class">
   
-    <meta name="keywords" content="assign_participants">
+    <meta name="keywords" content="assign_participants, create_multiple_pp">
   
 </head>
 
@@ -68,6 +68,18 @@
               
               <li>
                 <a href="#method-i-assign_participants">assign_participants</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-create_multiple_pp">create_multiple_pp</a>
               </li>
             
           </ul>
@@ -143,6 +155,48 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">assign_participants</span>
   <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;participant&#39;</span>)
   <span class="ruby-ivar">@programs</span> = <span class="ruby-constant">Program</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create_multiple_pp">
+            
+              <b>create_multiple_pp</b>()
+            
+            <a href="../../classes/Admin/ParticipantProgramsController.html#method-i-create_multiple_pp" name="method-i-create_multiple_pp" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-create_multiple_pp_source')" id="l_method-i-create_multiple_pp_source">show</a>
+                
+              </p>
+              <div id="method-i-create_multiple_pp_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/admin/participant_programs_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_multiple_pp</span>
+  <span class="ruby-ivar">@program</span> = <span class="ruby-constant">Program</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:participants</span>][<span class="ruby-value">:program_id</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:participant_ids</span>].<span class="ruby-identifier">present?</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:participant_ids</span>].<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">pid</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@program</span>.<span class="ruby-identifier">participant_programs</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">participant_id:</span> <span class="ruby-identifier">pid</span>) }
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_program_path</span>(<span class="ruby-ivar">@program</span>),
+      <span class="ruby-value">flash:</span> { <span class="ruby-value">success:</span> <span class="ruby-node">&quot;Participants assigned successfully to #{@program.name}&quot;</span> }
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

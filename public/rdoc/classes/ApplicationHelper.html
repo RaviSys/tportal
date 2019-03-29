@@ -17,7 +17,7 @@
 
     <meta name="keywords" content="ApplicationHelper class">
   
-    <meta name="keywords" content="flash_class, check_for_mentor_group, program_list, mentor_group_list">
+    <meta name="keywords" content="flash_class, present, check_for_mentor_group, program_list, mentor_group_list, participant_list, tutor_list">
   
 </head>
 
@@ -97,7 +97,29 @@
             
               
               <li>
+                <a href="#method-i-participant_list">participant_list</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-present">present</a>,
+              </li>
+            
+              
+              <li>
                 <a href="#method-i-program_list">program_list</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tutor_list">tutor_list</a>
               </li>
             
           </ul>
@@ -155,7 +177,7 @@
                 
               </p>
               <div id="method-i-check_for_mentor_group_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 12</span>
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check_for_mentor_group</span>(<span class="ruby-identifier">mentor</span>, <span class="ruby-identifier">mentor_group</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">mentor</span>.<span class="ruby-identifier">mentor_group</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">mentor</span>.<span class="ruby-identifier">mentor_group</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">mentor_group</span>
     <span class="ruby-keyword">true</span>
@@ -239,9 +261,86 @@
                 
               </p>
               <div id="method-i-mentor_group_list_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 24</span>
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mentor_group_list</span>
   <span class="ruby-constant">MentorGroup</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">mentor_group</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">mentor_group</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mentor_group</span>.<span class="ruby-identifier">id</span>]}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-participant_list">
+            
+              <b>participant_list</b>()
+            
+            <a href="../classes/ApplicationHelper.html#method-i-participant_list" name="method-i-participant_list" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-participant_list_source')" id="l_method-i-participant_list_source">show</a>
+                
+              </p>
+              <div id="method-i-participant_list_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">participant_list</span>
+  <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;participant&#39;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">p</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">id</span>] }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-present">
+            
+              <b>present</b>(object, klass = nil)
+            
+            <a href="../classes/ApplicationHelper.html#method-i-present" name="method-i-present" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-present_source')" id="l_method-i-present_source">show</a>
+                
+              </p>
+              <div id="method-i-present_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">present</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">klass</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">klass</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{object.class}Presenter&quot;</span>.<span class="ruby-identifier">constantize</span>
+  <span class="ruby-identifier">presenter</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">object</span>, <span class="ruby-keyword">self</span>)
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">presenter</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">presenter</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -276,9 +375,46 @@
                 
               </p>
               <div id="method-i-program_list_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 20</span>
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">program_list</span>
   <span class="ruby-constant">Program</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">p</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">id</span>]}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tutor_list">
+            
+              <b>tutor_list</b>()
+            
+            <a href="../classes/ApplicationHelper.html#method-i-tutor_list" name="method-i-tutor_list" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-tutor_list_source')" id="l_method-i-tutor_list_source">show</a>
+                
+              </p>
+              <div id="method-i-tutor_list_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tutor_list</span>
+  <span class="ruby-constant">User</span>.<span class="ruby-identifier">roled_users</span>(<span class="ruby-string">&#39;tutor&#39;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">p</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">id</span>] }
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
