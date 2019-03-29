@@ -15,4 +15,12 @@ test:
   pool: 5
   username: postgres
   password: postgres
-  
+
+production:
+  DATABASE_URL:             postgres://nimxlazamfubga:5028b15e1250ceabf19af31bf5a6bff9d1e7779859f606470e0621131017cd5c@ec2-23-23-195-205.compute-1.amazonaws.com:5432/d1hif71kv9nk4f
+  LANG:                     en_US.UTF-8
+  RACK_ENV:                 production
+  RAILS_ENV:                production
+  RAILS_LOG_TO_STDOUT:      enabled
+  RAILS_SERVE_STATIC_FILES: enabled
+  SECRET_KEY_BASE:          e77d7b303aed6effe1d41e01c95bf964c82f196ee9215783b0cd6835ecc2efee50f7a64458a56270d826a7cec7f660128f8fb404d8e7a13569d2e636c8e9d02a
